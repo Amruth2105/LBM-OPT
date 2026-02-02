@@ -1,0 +1,20 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Output files
+best_params.txt
+optimized_blade_flow.png
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+venv/
+.env
+
+# Plan file (local only)
+PLAN.MD.txt
+task.md
