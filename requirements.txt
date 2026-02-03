@@ -1,3 +1,5 @@
 numpy
 matplotlib
 bayesian-optimization
+numba
+cupy-cuda12x

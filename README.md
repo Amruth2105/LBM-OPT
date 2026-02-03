@@ -68,6 +68,38 @@ python3 vawt_visualize.py  # Generate animation + performance curves
 
 ---
 
+## Part 3: 3D VAWT (GPU Accelerated)
+
+Full 3D Lattice Boltzmann simulation using D3Q19 lattice with CUDA GPU acceleration.
+
+| File | Description |
+|------|-------------|
+| `vawt_3d_geometry.py` | 3D blade geometry with rotation |
+| `vawt_3d_solver.py` | D3Q19 LBM with CuPy/CUDA |
+| `vawt_3d_optimize.py` | Bayesian optimization for 3D |
+| `vawt_3d_visualize.py` | 3D flow visualization |
+
+### Requirements
+
+- **NVIDIA GPU** with CUDA support
+- Install CuPy: `pip install cupy-cuda12x` (adjust for your CUDA version)
+
+### Usage
+
+```bash
+python vawt_3d_optimize.py   # Find optimal 3D VAWT config (~30 min with GPU)
+python vawt_3d_visualize.py  # Generate 3D flow visualizations
+```
+
+### Performance
+
+| Hardware | Time per 600 iterations |
+|----------|------------------------|
+| CPU (NumPy) | ~25 minutes |
+| GPU (CuPy/CUDA) | ~30 seconds |
+
+---
+
 ## Physics Notes
 
 ### 2D Simplification
@@ -77,6 +109,13 @@ Both simulations use 2D flow approximation:
 - **VAWT**: Assumes uniform flow along blade span (neglects tip losses)
 
 This is a common research simplification that overestimates Cp by ~10-20%.
+
+### 3D LBM (Part 3)
+
+The 3D simulation uses the D3Q19 lattice:
+- 19 velocity directions (1 rest + 6 face + 12 edge neighbors)
+- Captures spanwise effects and tip vortices
+- More accurate but computationally intensive
 
 ### Key Metrics
 
